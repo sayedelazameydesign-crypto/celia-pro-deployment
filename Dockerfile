@@ -68,6 +68,8 @@ EXPOSE ${PORT}
 # Use tini as init system for proper signal handling
 ENTRYPOINT ["tini", "--"]
 
-# Run the application with uvicorn
-# Workers: 4 for production (adjust based on CPU cores)
-CMD ["sh", "-c", "uvicorn api.main:app --host 0.0.0.0 --port ${PORT} --workers ${UVICORN_WORKERS:-1} --proxy-headers --forwarded-allow-ips='*'"]
+# Back4app Free tier constraint: 256MB RAM total — single worker required.
+# Also set DB_POOL_SIZE=2 in container env vars.
+# NOTE: embedding model (fastembed) is lazy-loaded on first memory use,
+#       not at startup — startup memory stays well under 256MB.
+CMD ["sh", "-c", "uvicorn api.main:app --host 0.0.0.0 --port ${PORT} --workers 1 --proxy-headers --forwarded-allow-ips='*'"]
