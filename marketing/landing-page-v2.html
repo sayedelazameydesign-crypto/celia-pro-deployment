@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celia.pro - مساعد ذكي يتعلم ويتذكر | AI Assistant with Semantic Memory</title>
+    <meta name="description" content="Celia.pro هو مساعد ذكي متعدد المستخدمين، يتعلم من تفاعلاته، ويستدعي أدوات خارجية، ويدعم اللغة العربية والإنجليزية، مع ذاكرة دلالية طويلة المدى">
+    <meta name="keywords" content="AI assistant, Arabic AI, semantic memory, bilingual AI, open source AI, مساعد ذكي, ذكاء اصطناعي عربي">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Celia.pro - AI Assistant with Semantic Memory">
+    <meta property="og:description" content="AI assistant that learns, remembers, and supports Arabic + English">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://celia.pro">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Celia.pro - AI with Semantic Memory">
+    <meta name="twitter:description" content="AI assistant that learns and remembers">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%2306b6d4'/><text x='50' y='65' font-size='40' text-anchor='middle' fill='white' font-weight='bold'>C</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #06b6d4;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --dark: #0a0a1a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .hero .description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #94a3b8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 60px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            padding: 40px 30px;
+            background: var(--light);
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* Demo Section */
+        .demo {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+        }
+        
+        .demo-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .demo-chat {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .chat-message {
+            margin-bottom: 20px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        .chat-message.user {
+            text-align: left;
+        }
+        
+        .chat-message.assistant {
+            text-align: right;
+        }
+        
+        .chat-bubble {
+            display: inline-block;
+            padding: 15px 25px;
+            border-radius: 20px;
+            max-width: 80%;
+        }
+        
+        .user .chat-bubble {
+            background: var(--primary);
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .assistant .chat-bubble {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            padding: 40px 30px;
+            background: var(--light);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            color: var(--gray);
+        }
+        
+        .pricing-features li:before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        /* Waitlist Form */
+        .waitlist-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .waitlist-form input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .waitlist-form button {
+            padding: 15px 40px;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .waitlist-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            background: var(--dark);
+            color: white;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .waitlist-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Celia.pro</div>
+                <ul class="nav-links">
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#demo">عرض تجريبي</a></li>
+                    <li><a href="#pricing">الأسعار</a></li>
+                    <li><a href="#waitlist">سجل الآن</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in-up">Celia.pro</h1>
+                <p class="subtitle fade-in-up">مساعد ذكي يتعلم من تفاعلاتك ويتذكر ما هو مهم</p>
+                <p class="description fade-in-up">
+                    أول مساعد ذكي بذاكرة دلالية طويلة المدى، يدعم العربية والإنجليزية، 
+                    ويتحسن مع كل تفاعل
+                </p>
+                <div class="hero-buttons fade-in-up">
+                    <a href="#waitlist" class="btn btn-primary">ابدأ مجاناً الآن</a>
+                    <a href="#demo" class="btn btn-secondary">شاهد العرض التوضيحي</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">وقت التشغيل</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">384</div>
+                    <div class="stat-label">بُعد للمتجهات</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">دعم متواصل</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">لغات مدعومة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">مميزات فريدة</h2>
+            <p class="section-subtitle">
+                تقنيات متقدمة تجعل Celia.pro مختلفاً عن أي مساعد ذكي آخر
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>ذاكرة دلالية ذكية</h3>
+                    <p>
+                        يفهم المعنى الحقيقي لمحادثاتك باستخدام متجهات 384 بُعد. 
+                        يتذكر السياق ويستنتج العلاقات بين المفاهيم، لا يحفظ الكلمات فقط.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>نظام أدوات متعدد</h3>
+                    <p>
+                        بحث على الويب، تنفيذ كود، إدارة ملفات، وأكثر. 
+                        يستدعي الأداة المناسبة تلقائياً في الوقت المناسب لإنجاز مهامك.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>دعم عربي وإنجليزي</h3>
+                    <p>
+                        مصمم خصيصاً للدعم الكامل للغة العربية مع فهم عميق للهجات 
+                        المصرية والخليجية والشامية. يدعم التبديل بين اللغات بسلاسة.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>أمان متقدم</h3>
+                    <p>
+                        تشفير كامل للبيانات، عزل كامل للمستخدمين، مصادقة JWT متقدمة. 
+                        بياناتك آمنة 100% ولا نشاركها مع أي طرف ثالث.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>سريع وموثوق</h3>
+                    <p>
+                        Circuit Breaker متقدم وحدود أمان ذكية تمنع الأعطال. 
+                        يعمل بكفاءة عالية 24/7 مع وقت استجابة أقل من ثانية.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>يتعلم ويتطور</h3>
+                    <p>
+                        يتعلم من أخطائه ويتحسن مع الوقت. كلما استخدمته أكثر، 
+                        أصبح أذكى وأكثر فعالية في فهم احتياجاتك.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">شاهد كيف يعمل</h2>
+            <p class="section-subtitle" style="color: #cbd5e1;">
+                مثال حي على كيف يتعلم Celia.pro من تفاعلاتك
+            </p>
+            <div class="demo-container">
+                <div class="demo-chat">
+                    <div class="chat-message user">
+                        <div class="chat-bubble">
+                            ابحث لي عن أفضل المطاعم في القاهرة
+                        </div>
+                    </div>
+                    <div class="chat-message assistant">
+                        <div class="chat-bubble">
+                            🔍 جاري البحث عن أفضل المطاعم في القاهرة...
+                            <br><br>
+                            وجدت لك 5 مطاعم ممتازة:
+                            <br>
+                            1. مطعم النيل - تقييم 4.8/5
+                            <br>
+                            2. مطعم الكوثر - تقييم 4.7/5
+                            <br>
+                            ...
+                        </div>
+                    </div>
+                    <div class="chat-message user">
+                        <div class="chat-bubble">
+                            تذكر أنني أفضل المطاعم النباتية
+                        </div>
+                    </div>
+                    <div class="chat-message assistant">
+                        <div class="chat-bubble">
+                            ✅ تم حفظ تفضيلاتك! سأتذكر أنك تفضل المطاعم النباتية في المستقبل.
+                            <br><br>
+                            🧠 تم حفظ في الذاكرة الدلالية:
+                            <br>
+                            "المستخدم يفضل المطاعم النباتية"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">خطط بسيطة وشفافة</h2>
+            <p class="section-subtitle">
+                ابدأ مجاناً، ترقى عندما تحتاج المزيد
+            </p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>مجاني</h3>
+                    <div class="price">$0<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li>50 رسالة يومياً</li>
+                        <li>ذاكرة ليوم واحد</li>
+                        <li>أداة واحدة</li>
+                        <li>دعم مجتمعي</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-primary">ابدأ الآن</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">الأكثر شعبية</div>
+                    <h3>Pro</h3>
+                    <div class="price">$9<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li>رسائل غير محدودة</li>
+                        <li>ذاكرة طويلة المدى</li>
+                        <li>5 أدوات متقدمة</li>
+                        <li>أولوية في المعالجة</li>
+                        <li>دعم فني سريع</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-primary">جرب مجاناً 14 يوم</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Business</h3>
+                    <div class="price">$29<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li>كل مميزات Pro</li>
+                        <li>متعدد المستخدمين</li>
+                        <li>API access كامل</li>
+                        <li>تخصيص كامل</li>
+                        <li>دعم فني مخصص 24/7</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-primary">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section class="cta-section" id="waitlist">
+        <div class="container">
+            <h2>جاهز لتجربة المستقبل؟</h2>
+            <p>سجل الآن واحصل على 14 يوم مجاناً من خطة Pro</p>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" placeholder="بريدك الإلكتروني" required>
+                <button type="submit">سجل الآن</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Celia.pro</h4>
+                    <p style="color: #cbd5e1;">
+                        مساعد ذكي يتعلم ويتذكر، مصمم للمجتمع العربي والعالمي
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#pricing">الأسعار</a></li>
+                        <li><a href="#demo">عرض تجريبي</a></li>
+                        <li><a href="#waitlist">سجل الآن</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <ul>
+                        <li><a href="mailto:hello@celia.pro">hello@celia.pro</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Celia.pro - جميع الحقوق محفوظة</p>
+                <p style="margin-top: 10px;">صُنع بـ ❤️ للمجتمع العربي والعالمي</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Waitlist form submission
+        document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            
+            // TODO: Send to backend
+            console.log('Waitlist signup:', email);
+            
+            // Show success message
+            alert('شكراً لتسجيلك! سنرسل لك رابط الوصول قريباً.');
+            e.target.reset();
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.feature-card, .stat-item, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

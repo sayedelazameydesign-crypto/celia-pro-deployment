@@ -1,0 +1,75 @@
+# ============= GIT =============
+.git
+.gitignore
+
+# ============= DOCUMENTATION =============
+*.md
+!README.md
+LICENSE
+EULA.txt
+
+# ============= IDE & EDITORS =============
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# ============= OS =============
+.DS_Store
+Thumbs.db
+
+# ============= PYTHON =============
+__pycache__
+*.py[cod]
+*$py.class
+*.egg-info
+.eggs
+*.egg
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.venv
+venv
+env
+
+# ============= NODE =============
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============= BUILD ARTIFACTS =============
+dist
+build
+*.log
+
+# ============= DATABASE =============
+*.db
+*.sqlite
+*.sqlite3
+data/
+memory/
+
+# ============= TESTS =============
+tests/
+test/
+coverage/
+.coverage
+htmlcov/
+
+# ============= ENVIRONMENT =============
+.env
+.env.local
+.env.*.local
+
+# ============= DOCKER =============
+docker-compose.override.yml
+
+# ============= MARKETING =============
+marketing/
+
+# ============= TEMP =============
+tmp/
+temp/
+*.tmp

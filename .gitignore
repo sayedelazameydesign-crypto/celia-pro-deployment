@@ -1,0 +1,49 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+*.env
+!.env.example
+
+# API keys and credentials
+*secret*
+*credentials*
+keys.json
+config/secrets.json
+
+# Memory and data
+memory/
+data/
+*.db
+*.sqlite
+
+# Node
+node_modules/
+frontend/dist/
+frontend/build/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

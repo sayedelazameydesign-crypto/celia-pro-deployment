@@ -1,0 +1,56 @@
+# celia.pro Frontend Dockerfile
+# Multi-stage build: Node build → Nginx production
+# Version: 3.2.0 (P2-6 optimized for code-split bundles)
+
+# ============= BUILD STAGE =============
+FROM node:20-alpine AS builder
+
+WORKDIR /build
+
+# Copy package files first (cache layer)
+COPY frontend/package*.json ./
+
+# Install ALL dependencies (including dev for build)
+RUN npm ci
+
+# Copy source code
+COPY frontend/ .
+
+# Build the application (produces code-split chunks)
+RUN npm run build
+
+# ============= PRODUCTION STAGE =============
+FROM nginx:1.27-alpine AS production
+
+# Metadata
+LABEL maintainer="celia.pro team"
+LABEL version="3.2.0"
+LABEL description="celia.pro Frontend (React + Vite)"
+
+# Copy custom nginx configuration
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Remove default nginx config
+RUN rm -f /etc/nginx/conf.d/default.conf.bak
+
+# Copy built assets from builder
+COPY --from=builder /build/dist /usr/share/nginx/html
+
+# Create non-root user for nginx
+RUN addgroup -g 1001 -S celia && \
+    adduser -S -D -H -u 1001 -G celia -s /sbin/nologin celia && \
+    chown -R celia:celia /usr/share/nginx/html && \
+    chown -R celia:celia /var/cache/nginx && \
+    chown -R celia:celia /var/log/nginx && \
+    touch /var/run/nginx.pid && \
+    chown -R celia:celia /var/run/nginx.pid
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost/ || exit 1
+
+# Expose port
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

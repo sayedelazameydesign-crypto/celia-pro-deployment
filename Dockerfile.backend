@@ -1,0 +1,73 @@
+# celia.pro Backend Dockerfile
+# Multi-stage build for optimized production image
+# Version: 3.2.0
+
+# ============= BUILD STAGE =============
+FROM python:3.13-slim AS builder
+
+WORKDIR /build
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first (cache layer)
+COPY backend/requirements.txt .
+
+# Install Python dependencies to /install directory
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# ============= PRODUCTION STAGE =============
+FROM python:3.13-slim AS production
+
+# Metadata
+LABEL maintainer="celia.pro team"
+LABEL version="3.2.0"
+LABEL description="celia.pro AI Agent Backend"
+
+# Environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONPATH=/app \
+    PORT=8000 \
+    PIP_NO_CACHE_DIR=1
+
+# Install runtime dependencies only
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq5 \
+    curl \
+    tini \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd --gid 1001 celia \
+    && useradd --uid 1001 --gid 1001 --shell /bin/bash --create-home celia
+
+WORKDIR /app
+
+# Copy Python packages from builder (single layer, efficient)
+COPY --from=builder /install /usr/local
+
+# Copy application code
+COPY --chown=celia:celia backend/ .
+
+# Create necessary directories with proper permissions
+RUN mkdir -p /app/data /app/logs \
+    && chown -R celia:celia /app
+
+# Switch to non-root user
+USER celia
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+    CMD curl -f http://localhost:${PORT}/api/health || exit 1
+
+# Expose port
+EXPOSE ${PORT}
+
+# Use tini as init system for proper signal handling
+ENTRYPOINT ["tini", "--"]
+
+# Run the application with uvicorn
+# Workers: 4 for production (adjust based on CPU cores)
+CMD ["sh", "-c", "uvicorn api.main:app --host 0.0.0.0 --port ${PORT} --workers ${UVICORN_WORKERS:-4} --proxy-headers --forwarded-allow-ips='*'"]

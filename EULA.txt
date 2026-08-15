@@ -1,0 +1,230 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║              CELIA.PRO END USER LICENSE AGREEMENT (EULA)                     ║
+║                      اتفاقية ترخيص المستخدم النهائي                          ║
+║                           Version 2.0 - Enhanced                             ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  IMPORTANT - READ CAREFULLY / مهم - اقرأ بعناية:
+
+This End User License Agreement ("EULA") is a LEGAL AGREEMENT between you
+(an individual or single entity) and celia.pro for the use of celia.pro
+software.
+
+هذه الاتفاقية ("EULA") هي اتفاقية قانونية بينك (فرد أو كيان واحد) وبين
+celia.pro لاستخدام برنامج celia.pro.
+
+BY ACCESSING, VIEWING, OR OTHERWISE INTERACTING WITH CELIA.PRO, YOU AGREE
+TO BE BOUND BY ALL TERMS OF THIS EULA.
+
+من خلال الوصول إلى celia.pro أو عرضه أو التفاعل معه بأي طريقة، فإنك توافق
+على الالتزام بجميع شروط هذه الاتفاقية.
+
+IF YOU DO NOT AGREE TO THESE TERMS, DO NOT USE CELIA.PRO.
+
+إذا لم توافق على هذه الشروط، لا تستخدم celia.pro.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔒 LICENSE GRANT / منح الترخيص:
+
+celia.pro grants you a LIMITED, NON-EXCLUSIVE, NON-TRANSFERABLE, REVOCABLE
+license to access and use celia.pro solely for VISUAL INSPECTION AND REVIEW
+PURPOSES ON PUBLIC REPOSITORIES.
+
+يمنح celia.pro ترخيصاً محدوداً وغير حصري وغير قابل للتحويل وقابل للإلغاء
+للوصول إلى celia.pro واستخدامه فقط لأغراض المراجعة البصرية على المستودعات
+العامة.
+
+THIS LICENSE DOES NOT GRANT YOU THE RIGHT TO:
+
+هذا الترخيص لا يمنحك الحق في:
+
+❌ Use celia.pro for any commercial or non-commercial purpose
+   ❌ استخدام celia.pro لأي غرض تجاري أو غير تجاري
+
+❌ Deploy, execute, or run celia.pro on any server or platform
+   ❌ نشر أو تنفيذ أو تشغيل celia.pro على أي خادم أو منصة
+
+❌ Modify, adapt, translate, or create derivative works
+   ❌ تعديل أو تكييف أو ترجمة أو إنشاء أعمال مشتقة
+
+❌ Copy, reproduce, or distribute any part of celia.pro
+   ❌ نسخ أو استنساخ أو توزيع أي جزء من celia.pro
+
+❌ Reverse engineer, decompile, disassemble, or otherwise attempt to
+   derive the source code
+   ❌ الهندسة العكسية أو فك التجميع أو محاولة استخراج الكود المصدري
+
+❌ Rent, lease, lend, sell, sublicense, or otherwise transfer rights
+   ❌ التأجير أو الإعارة أو البيع أو منح ترخيص من الباطن أو نقل الحقوق
+
+❌ Remove, obscure, or alter any proprietary notices, labels, or marks
+   ❌ إزالة أو إخفاء أو تغيير أي إشعارات أو علامات ملكية
+
+❌ Integrate celia.pro into any other software or product
+   ❌ دمج celia.pro في أي برنامج أو منتج آخر
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚖️ INTELLECTUAL PROPERTY / الملكية الفكرية:
+
+celia.pro IS AND REMAINS THE EXCLUSIVE PROPERTY OF celia.pro. ALL INTELLECTUAL
+PROPERTY RIGHTS IN AND TO CELIA.PRO, INCLUDING BUT NOT LIMITED TO COPYRIGHTS,
+TRADEMARKS, TRADE SECRETS, AND PATENTS, ARE OWNED BY celia.pro.
+
+celia.pro هو ويبقى ملكية حصرية لـ celia.pro. جميع حقوق الملكية الفكرية في
+celia.pro، بما في ذلك على سبيل المثال لا الحصر حقوق الطبع والنشر والعلامات
+التجارية والأسرار التجارية وبراءات الاختراع، مملوكة لـ celia.pro.
+
+THIS EULA DOES NOT GRANT YOU ANY INTELLECTUAL PROPERTY RIGHTS IN CELIA.PRO
+EXCEPT FOR THE LIMITED RIGHT TO VISUALLY INSPECT THE SOURCE CODE.
+
+هذه الاتفاقية لا تمنحك أي حقوق ملكية فكرية في celia.pro باستثناء الحق المحدود
+في المراجعة البصرية للكود المصدري.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚫 RESTRICTIONS AND PROHIBITIONS / القيود والحظورات:
+
+YOU EXPRESSLY AGREE NOT TO:
+
+توافق صراحة على عدم:
+
+1. Use celia.pro without EXPLICIT PRIOR WRITTEN CONSENT from celia.pro
+   استخدام celia.pro دون موافقة خطية صريحة ومسبقة من celia.pro
+
+2. Attempt to gain unauthorized access to any part of celia.pro
+   محاولة الوصول غير المصرح به إلى أي جزء من celia.pro
+
+3. Use celia.pro for any illegal or unauthorized purpose
+   استخدام celia.pro لأي غرض غير قانوني أو غير مصرح به
+
+4. Interfere with or disrupt the integrity or performance of celia.pro
+   التدخل في سلامة أو أداء celia.pro أو تعطيلها
+
+5. Transmit any viruses, worms, defects, Trojan horses, or any other
+   malicious code through celia.pro
+   نقل أي فيروسات أو برامج ضارة عبر celia.pro
+
+6. Attempt to probe, scan, or test the vulnerability of celia.pro
+   محاولة فحص أو اختبار ثغرات celia.pro
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔐 DATA AND PRIVACY / البيانات والخصوصية:
+
+celia.pro MAY COLLECT AND PROCESS DATA AS DESCRIBED IN THE PRIVACY POLICY.
+YOU ARE RESPONSIBLE FOR MAINTAINING THE CONFIDENTIALITY OF YOUR ACCOUNT
+CREDENTIALS AND API KEYS.
+
+قد يجمع celia.pro ويعالج البيانات كما هو موضح في سياسة الخصوصية. أنت مسؤول
+عن الحفاظ على سرية بيانات اعتماد حسابك ومفاتيح API الخاصة بك.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 THIRD-PARTY SERVICES / خدمات الطرف الثالث:
+
+celia.pro INTEGRATES WITH THIRD-PARTY SERVICES (GOOGLE GEMINI, HUGGINGFACE).
+YOUR USE OF THESE SERVICES IS SUBJECT TO THEIR RESPECTIVE TERMS OF SERVICE.
+
+يتكامل celia.pro مع خدمات الطرف الثالث (Google Gemini, HuggingFace). يخضع
+استخدامك لهذه الخدمات لشروط الخدمة الخاصة بكل منها.
+
+celia.pro IS NOT RESPONSIBLE FOR THE AVAILABILITY, PERFORMANCE, OR SECURITY
+OF THIRD-PARTY SERVICES.
+
+celia.pro غير مسؤول عن توفر أو أداء أو أمان خدمات الطرف الثالث.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ DISCLAIMER OF WARRANTIES / إخلاء ضمانات:
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+يتم توفير البرنامج "كما هو" دون ضمان من أي نوع، صريح أو ضمني، بما في ذلك على
+سبيل المثال لا الحصر ضمانات القابلية للتسويق أو الملاءمة لغرض معين وعدم الانتهاك.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💰 LIMITATION OF LIABILITY / تحديد المسؤولية:
+
+IN NO EVENT SHALL celia.pro BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF
+PROFITS, DATA, OR USE, ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE.
+
+لا يكون celia.pro مسؤولاً في أي حال من الأحوال عن أي أضرار غير مباشرة أو عرضية
+أو خاصة أو تبعية، بما في ذلك على سبيل المثال لا الحصر خسارة الأرباح أو البيانات
+أو الاستخدام، الناشئة عن استخدام البرنامج أو عدم القدرة على استخدامه.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⏱️ TERM AND TERMINATION / المدة والإنهاء:
+
+THIS EULA IS EFFECTIVE UNTIL TERMINATED BY celia.pro.
+
+هذه الاتفاقية سارية حتى إنهائها بواسطة celia.pro.
+
+celia.pro MAY TERMINATE THIS EULA AT ANY TIME IF YOU FAIL TO COMPLY WITH
+ANY TERM OF THIS EULA.
+
+يجوز لـ celia.pro إنهاء هذه الاتفاقية في أي وقت إذا فشلت في الامتثال لأي شرط
+من شروط هذه الاتفاقية.
+
+UPON TERMINATION, YOU MUST CEASE ALL USE OF THE SOFTWARE AND DESTROY ALL
+COPIES.
+
+عند الإنهاء، يجب عليك التوقف عن جميع استخدامات البرنامج وإتلاف جميع النسخ.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚖️ GOVERNING LAW AND JURISDICTION / القانون الحاكم والاختصاص القضائي:
+
+THIS EULA SHALL BE GOVERNED BY AND CONSTRUED IN ACCORDANCE WITH APPLICABLE
+LAWS. ANY DISPUTES ARISING UNDER THIS EULA SHALL BE RESOLVED IN THE
+APPROPRIATE COURTS.
+
+تخضع هذه الاتفاقية وتُفسر وفقاً للقوانين المعمول بها. تُحل أي نزاعات ناشئة عن
+هذه الاتفاقية في المحاكم المختصة.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 CONTACT INFORMATION / معلومات الاتصال:
+
+FOR LICENSING INQUIRIES, PARTNERSHIP OPPORTUNITIES, OR ANY OTHER USE:
+
+للاستفسار عن الترخيص أو فرص الشراكة أو أي استخدام آخر:
+
+Email: licensing@celia.pro
+Website: https://celia.pro
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ ACCEPTANCE / القبول:
+
+BY USING CELIA.PRO, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS EULA, UNDERSTAND
+IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
+
+باستخدام celia.pro، فإنك تقر بأنك قرأت هذه الاتفاقية وتفهمها وتوافق على
+الالتزام بشروطها وأحكامها.
+
+YOU FURTHER ACKNOWLEDGE THAT THIS EULA CONSTITUTES A LEGAL AGREEMENT BETWEEN
+YOU AND celia.pro THAT IS ENFORCEABLE BY LAW.
+
+وتقر أيضاً بأن هذه الاتفاقية تشكل اتفاقاً قانونياً بينك وبين celia.pro يمكن
+تنفيذه بموجب القانون.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+© 2026 celia.pro. ALL RIGHTS RESERVED.
+© 2026 celia.pro. جميع الحقوق محفوظة.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+END OF EULA
+نهاية الاتفاقية

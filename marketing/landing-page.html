@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celia.pro - مساعد ذكي يتعلم ويتذكر</title>
+    <meta name="description" content="Celia.pro هو مساعد ذكي متعدد المستخدمين، يتعلم من تفاعلاته، ويستدعي أدوات خارجية، ويدعم اللغة العربية والإنجليزية">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Celia.pro - مساعد ذكي يتعلم ويتذكر">
+    <meta property="og:description" content="مساعد ذكي بذاكرة دلالية طويلة المدى، يدعم العربية والإنجليزية">
+    <meta property="og:type" content="website">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #06b6d4;
+            --secondary: #8b5cf6;
+            --dark: #0a0a1a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #cbd5e1;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            padding: 30px;
+            background: var(--light);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .benefit-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .benefit-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-item p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            padding: 40px 30px;
+            background: var(--light);
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            color: var(--gray);
+        }
+        
+        .pricing-features li:before {
+            content: "✓ ";
+            color: var(--primary);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #cbd5e1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .features h2,
+            .benefits h2,
+            .pricing h2,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in-up">Celia.pro</h1>
+            <p class="fade-in-up">مساعد ذكي يتعلم من تفاعلاتك ويتذكر ما هو مهم</p>
+            <a href="#pricing" class="cta-button fade-in-up">ابدأ مجاناً الآن</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>مميزات فريدة</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>ذاكرة دلالية ذكية</h3>
+                    <p>يفهم المعنى الحقيقي لمحادثاتك، لا يحفظ الكلمات فقط. يتذكر السياق ويستنتج العلاقات بين المفاهيم.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>أدوات متعددة</h3>
+                    <p>بحث على الويب، تنفيذ كود، إدارة ملفات، وأكثر. يستدعي الأداة المناسبة في الوقت المناسب.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>دعم عربي وإنجليزي</h3>
+                    <p>مصمم خصيصاً للدعم الكامل للغة العربية مع فهم عميق للهجات والسياق الثقافي.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>أمان متقدم</h3>
+                    <p>تشفير كامل، عزل المستخدمين، ومصادقة JWT. بياناتك آمنة 100%.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>سريع وموثوق</h3>
+                    <p>Circuit Breaker وحدود أمان تمنع الأعطال. يعمل بكفاءة عالية 24/7.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>يتعلم ويتطور</h3>
+                    <p>يتعلم من أخطائه ويتحسن مع الوقت. كلما استخدمته أكثر، أصبح أذكى.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>لماذا Celia.pro؟</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <div>
+                        <h3>وفّر وقتك</h3>
+                        <p>أنجز مهامك في دقائق بدل ساعات</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div>
+                        <h3>وفّر مالك</h3>
+                        <p>بديل اقتصادي للمساعدات الذكية الأخرى</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎓</div>
+                    <div>
+                        <h3>تعلم مستمر</h3>
+                        <p>يتعلم من تفاعلاتك ويصبح أكثر فعالية</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛠️</div>
+                    <div>
+                        <h3>قابل للتخصيص</h3>
+                        <p>أضف أدواتك الخاصة وخصصه حسب احتياجاتك</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>خطط بسيطة وشفافة</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>مجاني</h3>
+                    <div class="price">$0<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li>50 رسالة يومياً</li>
+                        <li>ذاكرة ليوم واحد</li>
+                        <li>أداة واحدة</li>
+                        <li>دعم مجتمعي</li>
+                    </ul>
+                    <a href="#" class="cta-button">ابدأ الآن</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">$9<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li>رسائل غير محدودة</li>
+                        <li>ذاكرة طويلة المدى</li>
+                        <li>5 أدوات متقدمة</li>
+                        <li>أولوية في المعالجة</li>
+                        <li>دعم فني سريع</li>
+                    </ul>
+                    <a href="#" class="cta-button">جرب مجاناً 14 يوم</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Business</h3>
+                    <div class="price">$29<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li>كل مميزات Pro</li>
+                        <li>متعدد المستخدمين</li>
+                        <li>API access كامل</li>
+                        <li>تخصيص كامل</li>
+                        <li>دعم فني مخصص 24/7</li>
+                    </ul>
+                    <a href="#" class="cta-button">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>جاهز لتجربة المستقبل؟</h2>
+            <p>انضم إلى مئات المستخدمين الذين يستخدمون Celia.pro يومياً</p>
+            <a href="#pricing" class="cta-button">ابدأ مجاناً الآن</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Celia.pro - جميع الحقوق محفوظة</p>
+            <p>صُنع بـ ❤️ للمجتمع العربي والعالمي</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.feature-card, .benefit-item, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

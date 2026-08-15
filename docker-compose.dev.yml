@@ -1,0 +1,68 @@
+# celia.pro Docker Compose - Development Mode
+# Lightweight setup for local development
+# Usage: docker compose -f docker-compose.dev.yml up
+
+version: '3.8'
+
+services:
+  # ============= POSTGRESQL DATABASE =============
+  postgres:
+    image: postgres:16-alpine
+    container_name: celia-dev-postgres
+    environment:
+      POSTGRES_USER: celia_dev
+      POSTGRES_PASSWORD: celia_dev_password
+      POSTGRES_DB: celia_dev_db
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U celia_dev"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ============= BACKEND (with hot-reload) =============
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      target: builder  # Use builder stage for dev
+    container_name: celia-dev-backend
+    command: >
+      sh -c "pip install uvicorn[standard] --quiet &&
+             uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload --reload-dir /app"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://celia_dev:celia_dev_password@postgres:5432/celia_dev_db
+      AUTH_REQUIRED: "false"
+      ENVIRONMENT: development
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      LOG_FORMAT: console
+    volumes:
+      - ./backend:/app:cached
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    working_dir: /app
+
+  # ============= FRONTEND (with hot-reload) =============
+  frontend:
+    image: node:20-alpine
+    container_name: celia-dev-frontend
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./frontend:/app:cached
+      - /app/node_modules  # Prevent overwriting node_modules
+    ports:
+      - "5173:5173"
+    working_dir: /app
+
+volumes:
+  postgres_dev_data:
+    driver: local
